@@ -1,0 +1,174 @@
+[
+    {
+        "description": "Fix version exists, set RL=O",
+        "rule": "package.Package.fixVersions",
+        "vector_changes": [
+            {
+                "vector": "RL",
+                "value": "O"
+            }
+        ]
+    },
+    {
+        "description": "CVE exists, set RC=C",
+        "rule": "package.Vulnerabilities[0]['cve']",
+        "vector_changes": [
+            {
+                "vector": "RC",
+                "value": "C"
+            }
+        ]
+    },
+    {
+        "description": "Vulnerability exists in a workengine project, set MAV=A",
+        "rule": "locations=~~'(workengine)'",
+        "vector_changes": [
+            {
+                "vector": "MAV",
+                "value": "A"
+            }
+        ]
+    },
+    {
+        "description": "Vulnerability exists in a test project, set MAV=A, MAC=H, MC=N, MI=N",
+        "rule": "locations=~~'(workengine)'",
+        "vector_changes": [
+            {
+                "vector": "MAV",
+                "value": "A"
+            },
+            {
+                "vector": "MAC",
+                "value": "H"
+            },
+            {
+                "vector": "MC",
+                "value": "N"
+            },
+            {
+                "vector": "MI",
+                "value": "N"
+            }
+        ]
+    },
+    {
+        "description": "Vulnerability exists in gulp, webpack, cypress, build, or react-scripts, set MAV=A, MAC=H, MPR=H, MC=L, MI=L, MA=L",
+        "rule": "package.Package.impactPaths[0][1]=~~'(?:awesome-typescript-loader|karma:gulp|webpack|cypress|build|react-scripts)'",
+        "vector_changes": [
+            {
+                "vector": "MAV",
+                "value": "A"
+            },
+            {
+                "vector": "MAC",
+                "value": "H"
+            },
+            {
+                "vector": "MPR",
+                "value": "H"
+            },
+            {
+                "vector": "MC",
+                "value": "L"
+            },
+            {
+                "vector": "MI",
+                "value": "L"
+            },
+            {
+                "vector": "MA",
+                "value": "L"
+            }
+        ]
+    },
+    {
+        "description": "Vulnerability exists in Escher_WebUI or AppShell",
+        "rule": "locations=~~'(?:Escher_WebUI|AppShell)'",
+        "vector_changes": [
+            {
+                "vector": "MPR",
+                "value": "L"
+            },
+            {
+                "vector": "MC",
+                "value": "L"
+            },
+            {
+                "vector": "MI",
+                "value": "L"
+            },
+            {
+                "vector": "MA",
+                "value": "L"
+            }
+        ]
+    },
+    {
+        "description": "Minimist version < 1 and fix version >= 1.2.6 ",
+        "rule": "package.Package.name == 'minimist' and [version for version in package.Package.fixVersions if version == '[1.2.6]'] and 'covert' in package.Package.impactPaths[0][0]",
+        "vector_changes": [
+            {
+                "vector": "RL",
+                "value": "O"
+            },
+            {
+                "vector": "RC",
+                "value": "C"
+            },
+            {
+                "vector": "MC",
+                "value": "L"
+            },
+            {
+                "vector": "MI",
+                "value": "L"
+            },
+            {
+                "vector": "MA",
+                "value": "L"
+            }
+        ]
+    },
+    {
+        "description": "Microsoft Owin 4.1.0 exists in paylocity.apis.framework.client:4.5.0 ",
+        "rule": "package.Package.name == 'Microsoft.Owin' and package.Package.version == '4.1.0' and package.Package.impactPaths[0][1] == 'Paylocity.Apis.Framework.Client:4.5.0'",
+        "vector_changes": [
+            {
+                "vector": "MAC",
+                "value": "H"
+            },
+            {
+                "vector": "MC",
+                "value": "L"
+            },
+            {
+                "vector": "MI",
+                "value": "L"
+            },
+            {
+                "vector": "MA",
+                "value": "L"
+            }
+        ]
+    },
+    {
+        "description": "Invalid Vector Value Test ",
+        "rule": "package.Package.name == 'Invalid_Vector_Value_Test",
+        "vector_changes": [
+            {
+                "vector": "MAC",
+                "value": "Z"
+            }
+        ]
+    },
+    {
+        "description": "Invalid Rule Test ",
+        "rule": "package.name == 'Invalid_Vector_Value_Test",
+        "vector_changes": [
+            {
+                "vector": "MAC",
+                "value": "Z"
+            }
+        ]
+    }
+]
