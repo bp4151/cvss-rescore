@@ -12,5 +12,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: run tox build
       run: | 
+        pip install tox
         tox -e build
   
