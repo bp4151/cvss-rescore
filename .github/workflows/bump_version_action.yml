@@ -7,8 +7,8 @@ on:
 jobs:
   bump_release:
     env:
-      OWNER: ${{GITHUB_REPOSITORY_OWNER}}
-      REPO: ${{GITHUB_REPOSITORY_ID}}
+      OWNER: "bp4151"
+      REPO: "cvss-rescore"
       CVSS_RESCORE_GH_TOKEN: ${{ secrets.CVSS_RESCORE_GH_TOKEN }}
     name: Bump release version
     runs-on: ubuntu-latest
