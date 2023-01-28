@@ -39,4 +39,4 @@ jobs:
         done
 
         
-        gh release $RELEASE_TAG dist
+        gh release upload $RELEASE_TAG dist
