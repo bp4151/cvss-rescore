@@ -11,8 +11,9 @@ jobs:
     steps:
     - uses: actions/setup-python@v2
     - name: run pip install and bump script
+    - working-directory: ./.github/workflows
       run: |
-        pip install -r .github/workflows/bump_version_requirements.txt
+        pip install -r bump_version_requirements.txt
 #  tox_build:
 #    name: Build project using Tox
 #    runs-on: ubuntu-latest
