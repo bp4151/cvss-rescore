@@ -8,9 +8,11 @@ from dotenv import load_dotenv
 from requests import Response
 
 FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+formatter = logging.Formatter(FORMAT)
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler(stream=sys.stdout)
-ch.setFormatter(FORMAT)
+ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 
