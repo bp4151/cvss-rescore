@@ -23,8 +23,3 @@ jobs:
         pip install tox setuptools
         tox -e build
         ls -lart dist
-    - name: Use the Upload Artifact GitHub Action
-      uses: actions/upload-artifact@v2
-      with: 
-        name: assets-for-download
-        path: dist
