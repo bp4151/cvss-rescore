@@ -79,6 +79,8 @@ def main(token: str, owner: str, repo: str):
             repo=repo,
             tag=new_release_tag,
             generate_release_notes=True)
+        os.putenv('RELEASE_TAG', new_release_tag)
+
 
     else:
         # message property exists and has a value
@@ -91,6 +93,7 @@ def main(token: str, owner: str, repo: str):
             repo=repo,
             tag=current_release_tag,
             generate_release_notes=False)
+        os.putenv('RELEASE_TAG', current_release_tag)
 
 
 if __name__ == '__main__':
