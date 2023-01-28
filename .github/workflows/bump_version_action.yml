@@ -27,6 +27,4 @@ jobs:
       run: | 
         pip install tox setuptools
         tox -e build
-    - name: check tox output
-    - run: ls -lart dist 
-  
+        ls -lart dist
