@@ -12,8 +12,7 @@ jobs:
     - uses: actions/setup-python@v2
     - name: run pip install and bump script
       run: |
-        script = os.path(os.getcwd(), '.github', 'workflows', 'bump_version.py')
-        print(script)
+        pip install -r bump_version_requirements.txt
 #  tox_build:
 #    name: Build project using Tox
 #    runs-on: ubuntu-latest
