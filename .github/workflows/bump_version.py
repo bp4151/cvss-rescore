@@ -60,6 +60,7 @@ def create_github_release(
 
 
 def main(token: str, owner: str, repo: str):
+    env_file = os.getenv('GITHUB_ENV')
 
     release = get_github_latest_release(token=token, owner=owner, repo=repo)
 
@@ -79,8 +80,8 @@ def main(token: str, owner: str, repo: str):
             repo=repo,
             tag=new_release_tag,
             generate_release_notes=True)
-        os.putenv('RELEASE_TAG', new_release_tag)
-
+        with open(env_file, "a") as f:
+            f.write(f"RELEASE_TAG={new_release_tag}")
 
     else:
         # message property exists and has a value
@@ -93,7 +94,8 @@ def main(token: str, owner: str, repo: str):
             repo=repo,
             tag=current_release_tag,
             generate_release_notes=False)
-        os.putenv('RELEASE_TAG', current_release_tag)
+        with open(env_file, "a") as f:
+            f.write(f"RELEASE_TAG={current_release_tag}")
 
 
 if __name__ == '__main__':
