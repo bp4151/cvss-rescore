@@ -17,6 +17,7 @@ logger.addHandler(ch)
 
 
 def get_github_latest_release(token: str, owner: str, repo: str) -> Response:
+    logger.info(f'{owner}/{repo}')
     headers = {
         'Accept': 'application/vnd.github+json',
         'Authorization': f'Bearer {token}',
@@ -26,6 +27,7 @@ def get_github_latest_release(token: str, owner: str, repo: str) -> Response:
     response = requests.get(
         url=f'https://api.github.com/repos/{owner}/{repo}/releases/latest',
         headers=headers)
+    logger.info(response.json())
     return response
 
 
