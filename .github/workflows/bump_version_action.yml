@@ -9,6 +9,7 @@ jobs:
     env:
       OWNER: GITHUB_REPOSITORY_OWNER
       REPO: GITHUB_REPOSITORY_ID
+      CVSS_RESCORE_GH_TOKEN: ${{ secrets.CVSS_RESCORE_GH_TOKEN }}
     name: Bump release version
     runs-on: ubuntu-latest
     steps:
