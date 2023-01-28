@@ -9,9 +9,9 @@ jobs:
     name: Bump release version
     runs-on: ubuntu-latest
     steps:
-    - env:
-        OWNER: GITHUB_REPOSITORY_OWNER
-        REPO: GITHUB_REPOSITORY_ID
+#    - env:
+#        OWNER: GITHUB_REPOSITORY_OWNER
+#        REPO: GITHUB_REPOSITORY_ID
     - uses: actions/checkout@v3.3.0
     - name: run pip install and bump script
       run: |
