@@ -7,20 +7,20 @@ on:
 jobs:
   bump_release:
     name: Bump release version
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-python@v2
     - name: run pip install and bump script
       run: |
         script = os.path(os.getcwd(), '.github', 'workflows', 'bump_version.py')
         print(script)
-  tox_build:
-    name: Build project using Tox
-    runs-on: ubuntu:latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: run tox build
-      run: | 
-        pip install tox setuptools
-        tox -e build
+#  tox_build:
+#    name: Build project using Tox
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v1
+#    - name: run tox build
+#      run: | 
+#        pip install tox setuptools
+#        tox -e build
   
