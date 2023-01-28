@@ -9,10 +9,14 @@ jobs:
     name: Bump release version
     runs-on: ubuntu-latest
     steps:
+    - env:
+        OWNER: GITHUB_REPOSITORY_OWNER
+        REPO: GITHUB_REPOSITORY_ID
     - uses: actions/checkout@v3.3.0
     - name: run pip install and bump script
       run: |
         pip install -r .github/workflows/bump_version_requirements.txt
+        python .github/workflows/bump_version.py
 #  tox_build:
 #    name: Build project using Tox
 #    runs-on: ubuntu-latest
