@@ -16,7 +16,7 @@ jobs:
     - name: run pip install and bump script
       run: |
         pip install -r ./.github/workflows/bump_version_requirements.txt
-        python ./.github/workflows/bump_version.py
+#        python ./.github/workflows/bump_version.py
 #  tox_build:
 #    name: Build project using Tox
 #    runs-on: ubuntu-latest
