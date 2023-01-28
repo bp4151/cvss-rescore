@@ -5,7 +5,7 @@ on:
     - release/*
   workflow_dispatch:
 jobs:
-  bump_release:
+  bump_release_and_tox_build:
     env:
       OWNER: "bp4151"
       REPO: "cvss-rescore"
@@ -18,13 +18,13 @@ jobs:
       run: |
         pip install -r .github/workflows/bump_version_requirements.txt
         python .github/workflows/bump_version.py
-  tox_build:
-    name: Build project using Tox
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
     - name: run tox build
       run: | 
         pip install tox setuptools
         tox -e build
         ls -lart dist
+    - name: Use the Upload Artifact GitHub Action
+      uses: actions/upload-artifact@v2
+      with: 
+        name: assets-for-download
+        path: dist
