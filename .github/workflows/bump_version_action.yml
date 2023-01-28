@@ -24,3 +24,7 @@ jobs:
         tox -e build
         ls -lart dist
         echo "$RELEASE_TAG"
+        mv cvss_rescore-*.tar.gz cvss_rescore-$RELEASE_TAG.tar.gz
+        mv cvss_rescore-*.whl cvss_rescore-$RELEASE_TAG-py3-none-any.whl
+        
+        gh release $RELEASE_TAG dist
