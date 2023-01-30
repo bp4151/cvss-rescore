@@ -25,8 +25,10 @@
 
 .. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
     :alt: Project generated with PyScaffold
-    :target: https://pyscaffold.org/
-
+    :target: https://pyscaffold.org/1
+.. image:: https://bestpractices.coreinfrastructure.org/projects/6968
+    :alt: OpenSSF Badges 
+    :target: https://bestpractices.coreinfrastructure.org/projects/6968/badge
 |
 
 ============
