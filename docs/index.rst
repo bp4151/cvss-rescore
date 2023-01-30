@@ -35,6 +35,8 @@ Contents
    Authors <authors>
    Changelog <changelog>
    Module Reference <api/modules>
+   Rules File <rules>
+   Sample Code <samplecode>
 
 
 Indices and tables

@@ -11,7 +11,7 @@ from cvss_rescore.cvsslib import ManualVettingException
 logger = logging.getLogger(__name__)
 
 
-rules_file_path = Path(__file__).parent.parent.parent
+rules_file_path = Path(__file__).parent.parent
 rules_file = os.path.join(rules_file_path, 'rules_actions.json')
 
 
@@ -71,7 +71,13 @@ def test_cvss3_does_not_throw_exception():
     }
     original_vector_string = record.get('package').get('Vulnerabilities')[0].get('cvssVector')
     cvsslib = CvssLib(rules_file_path=rules_file)
-    modified_vector_string, modified_environmental_score, modified_severity, rules_applied = cvsslib.get_modified_cvss(record=record, original_vector_string=original_vector_string, logger=logger)
+    modified_vector_string, \
+        modified_environmental_score, \
+        modified_severity, \
+        rules_applied = cvsslib.get_modified_cvss(
+        record=record,
+        original_vector_string=original_vector_string,
+        logger=logger)
     assert modified_severity[0] == 'Critical'
 
 

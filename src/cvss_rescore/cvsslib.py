@@ -10,6 +10,10 @@ class CvssLib:
 
     @classmethod
     def __init__(cls, rules_file_path: str):
+        """
+        :param rules_file_path: str
+        :rtype: object
+        """
         cls.rules_actions = cls.__get_rules_actions(
             rules_file_path=rules_file_path)
 
@@ -18,7 +22,20 @@ class CvssLib:
                           record: dict,
                           original_vector_string: str,
                           logger: Logger) -> tuple:
-
+        """
+        :param record: dict - This is a single vulnerability record from your json output file
+        :param original_vector_string: str
+        :param logger: Logger - passed in from the calling script
+        :return:
+        :rtype: tuple - modified_vector_string, modified_environmental_score, \
+            modified_severity, rules_applied
+        :exception: SymbolResolutionError will log to error if the path in your
+            custom rule cannot be found in the source json file
+        :exception: RuleSyntaxError will log to error if the rule you have
+            defined cannot be parsed.
+        :exception: ManualVettingException will be thrown if no rules were matched.
+            This can be caught in your parent script
+        """
         original_vector_obj = cls.__str2dict(original_vector_string)
         if original_vector_obj['CVSS'].startswith('3'):
             cvss_obj = CVSS3(original_vector_string)
