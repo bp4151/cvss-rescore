@@ -9,8 +9,8 @@ jobs:
     env:
       OWNER: "bp4151"
       REPO: "cvss-rescore"
-      CVSS_RESCORE_GH_TOKEN: ${{ secrets.CVSS_RESCORE_FG_PAT }}
-      GH_TOKEN: ${{ secrets.CVSS_RESCORE_FG_PAT }}
+      CVSS_RESCORE_GH_TOKEN: ${{ secrets.CVSS_RESCORE_GH_TOKEN }}
+      GH_TOKEN: ${{ secrets.CVSS_RESCORE_GH_TOKEN }}
     name: Bump release version
     runs-on: ubuntu-latest
     steps:
