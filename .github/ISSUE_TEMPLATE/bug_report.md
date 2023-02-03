@@ -27,6 +27,8 @@ If applicable, add screenshots to help explain your problem.
  - Version [e.g. 22]
  - Additional project dependencies (requirements.txt, Pipfile, etc.)
 
+**Required Files**
+Please include the rules file and source file you are using if possible. Be sure to scrub your files of any sensitive data that isn't required to analyze this bug.
 
 **Additional context**
 Add any other context about the problem here.
