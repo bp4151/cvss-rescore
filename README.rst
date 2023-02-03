@@ -70,6 +70,18 @@ Because we leverage the Python rule-engine package as a dependency, users can cr
 rules_actions.json file in their root directory. Users can create as many rules as they need, 
 modifying one or more cvss vector metrics per rule. 
 
+Requirements
+=============
+- Python 3.6 or higher
+- A working knowledge of CVSS calcuation. You can reference the calculator at 
+https://www.first.org/cvss/calculator/3.1
+https://www.first.org/cvss/user-guide
+https://www.first.org/cvss/v3.1/examples
+
+Documentation
+==============
+You can get the current documentation at https://cvss-rescore.readthedocs.io/en/latest/
+
 .. _pyscaffold-notes:
 
 Dependencies
