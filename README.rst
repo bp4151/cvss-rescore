@@ -74,9 +74,9 @@ Requirements
 =============
 - Python 3.6 or higher
 - A working knowledge of CVSS calcuation. You can reference the calculator at   
-https://www.first.org/cvss/calculator/3.1     
-https://www.first.org/cvss/user-guide   
-https://www.first.org/cvss/v3.1/examples   
+| https://www.first.org/cvss/calculator/3.1     
+| https://www.first.org/cvss/user-guide   
+| https://www.first.org/cvss/v3.1/examples   
 
 Documentation
 ==============
