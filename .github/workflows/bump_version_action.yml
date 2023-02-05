@@ -19,13 +19,8 @@ jobs:
         ls -lart dist
         
         RELEASE_TAG=$(git tag --sort=committerdate | tail -1)
-        echo "$RELEASE_TAG"
+        echo "RELEASE_TAG: $RELEASE_TAG"
         
         FILES="dist/*"
-
-        for FILE in $FILES
-        do
-          echo "${FILE}"
-          gh release upload $RELEASE_TAG $FILE
-          gh release upload $RELEASE_TAG $FILE
-        done
+        echo "FILES: $FILES"
+        gh release upload $RELEASE_TAG $FILES
