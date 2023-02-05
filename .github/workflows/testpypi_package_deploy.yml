@@ -15,4 +15,6 @@ jobs:
     - name: run tox publish
       run: | 
         pip install tox setuptools twine
+        tox -e build
+        ls -lart dist
         tox -e publish
