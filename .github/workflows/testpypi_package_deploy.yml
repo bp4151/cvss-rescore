@@ -8,6 +8,7 @@ jobs:
       TWINE_PASSWORD: ${{ secrets.TEST_TWINE_PASSWORD }}
       TWINE_REPOSITORY: ${{ secrets.TEST_TWINE_REPOSITORY }}
       TWINE_REPOSITORY_URL: ${{ secrets.TEST_TWINE_REPOSITORY_URL }}
+      GH_TOKEN: ${{ secrets.CVSS_RESCORE_GH_TOKEN }}
     name: TestPypi Package Deploy
     runs-on: ubuntu-latest
     steps:
