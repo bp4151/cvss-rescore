@@ -15,6 +15,9 @@ jobs:
     - name: run tox publish
       run: | 
         pip install tox setuptools twine
-        tox -e build
+        mkdir dist
+        cd dist
+        gh release download v0.0.1
+        cd ..
         ls -lart dist
         tox -e publish
