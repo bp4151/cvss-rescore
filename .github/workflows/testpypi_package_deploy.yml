@@ -1,0 +1,17 @@
+name: TestPypi Package Deploy
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    env:
+      TWINE_USERNAME: ${{ secrets.TEST_TWINE_USERNAME }}
+      TWINE_PASSWORD: ${{ secrets.TEST_TWINE_PASSWORD }}
+      TWINE_REPOSITORY: ${{ secrets.TEST_TWINE_REPOSITORY }}
+      TWINE_REPOSITORY_URL: ${{ secrets.TEST_TWINE_REPOSITORY_URL }}
+    name: Bump release version
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3.3.0
+    - name: run tox publish
+      run: | 
+        python -m twine upload {posargs:--repository {env:TWINE_REPOSITORY:testpypi}} dist/*
