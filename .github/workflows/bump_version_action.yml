@@ -1,8 +1,5 @@
 name: Bump Version Action
 on:
-  push:
-    branches:
-    - release/*
   workflow_dispatch:
 jobs:
   bump_release_and_tox_build:
@@ -15,28 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.3.0
-    - name: run pip install and bump script
-      run: |
-        pip install -r .github/workflows/bump_version_requirements.txt
-        python .github/workflows/bump_version.py
     - name: run tox build
       run: | 
         pip install tox setuptools
         tox -e build
         ls -lart dist
-        echo "$RELEASE_TAG"
+        
+        RELEASE_TAG=$(git tag --sort=committerdate | tail -1)
+        if ($RELEASE_TAG == '')
+          RELEASE_TAG=v0.0.1
+        fi
+        echo "RELEASE_TAG: $RELEASE_TAG"
         
         FILES="dist/*"
-
-        for FILE in $FILES
-        do
-          echo "${FILE}"
-          if [[ ${FILE} == *.tar.gz ]]
-          then
-            mv ${FILE} dist/cvss_rescore_$RELEASE_TAG.tar.gz
-            gh release upload $RELEASE_TAG dist/cvss_rescore_$RELEASE_TAG.tar.gz
-          else
-            mv ${FILE} dist/cvss_rescore_$RELEASE_TAG-py3-none-any.whl
-            gh release upload $RELEASE_TAG dist/cvss_rescore_$RELEASE_TAG-py3-none-any.whl
-          fi
-        done
+        echo "FILES: $FILES"
+        gh release upload $RELEASE_TAG $FILES
