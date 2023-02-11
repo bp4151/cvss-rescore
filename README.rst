@@ -1,4 +1,4 @@
-.. These are examples of badges you might want to add to your README:
+rst.. These are examples of badges you might want to add to your README:
    please update the URLs accordingly
 
     .. image:: https://api.cirrus-ci.com/github/<USER>/cvss_rescore.svg?branch=main
@@ -26,18 +26,17 @@
 .. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
     :alt: Project generated with PyScaffold
     :target: https://pyscaffold.org/1
-    
+
 .. image:: https://bestpractices.coreinfrastructure.org/projects/6968/badge
-    :alt: OpenSSF Badges 
+    :alt: OpenSSF Badges
     :target: https://bestpractices.coreinfrastructure.org/projects/6968
-|
 
 ============
 cvss_rescore
 ============
 
 
-    Rescore cvss3 and 3.1 results from any json file based on custom rules. 
+    Rescore cvss3 and 3.1 results from any json file based on custom rules.
 
 ------------
 The Problem
@@ -47,15 +46,15 @@ Cvss scoring consists of three components: Base, Temporal, and Environmental.
 When working with third-party dependency (SCA) vulnerabilities, 
 nearly every tool reports it's scores only using the base score. This is
 understandable, as the reporters of the vulnerabilities would only know about
-the vulnerabilities themselves. They would have no idea how the vulnerable package 
-is actually used in your project. Do you have mitigating controls in place? Is it only 
-a test project? Is it only in a protected CI/CD pipeline? All of these factors and more 
+the vulnerabilities themselves. They would have no idea how the vulnerable package
+is actually used in your project. Do you have mitigating controls in place? Is it only
+a test project? Is it only in a protected CI/CD pipeline? All of these factors and more
 can impact the environmental score, which can lower the actual score of a vulnerability
-significantly. 
+significantly.
 
-----------------
 How We Use This
 ----------------
+
 Output-Agnostic
 ================
 
@@ -73,7 +72,8 @@ modifying one or more cvss vector metrics per rule.
 Requirements
 =============
 - Python 3.6 or higher
-- A working knowledge of CVSS calcuation. You can reference the calculator at   
+- A working knowledge of CVSS calcuation. You can reference the calculator at
+
 | https://www.first.org/cvss/calculator/3.1     
 | https://www.first.org/cvss/user-guide   
 | https://www.first.org/cvss/v3.1/examples   
