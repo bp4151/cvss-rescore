@@ -46,3 +46,5 @@ Notes:
 
 - Modified Severity is a 4 value tuple representing the Cvss Base, Temporal, and Environmental scores, and the rules that were applied.
 - Rules Applied is a list of all rules that were actually applied against the record to determine the modified cvss score.
+
+A full example with a real Snyk-generated results file and rule file for the tested project is available at https://github.com/bp4151/cvss-rescore-example
