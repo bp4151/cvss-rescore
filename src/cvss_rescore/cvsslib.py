@@ -1,5 +1,5 @@
 import json
-from logging import Logger
+import logging
 
 from cvss.cvss3 import CVSS3
 from rule_engine import Rule, SymbolResolutionError, RuleSyntaxError
@@ -7,6 +7,9 @@ from .manualVettingException import ManualVettingException
 
 
 class CvssLib:
+
+    rules_actions = None
+    logger = logging.getLogger()
 
     @classmethod
     def __init__(cls, rules_file_path: str):
@@ -20,12 +23,10 @@ class CvssLib:
     @classmethod
     def get_modified_cvss(cls,
                           record: dict,
-                          original_vector_string: str,
-                          logger: Logger) -> tuple:
+                          original_vector_string: str) -> tuple:
         """
         :param record: dict - This is a single vulnerability record from your json output file
         :param original_vector_string: str
-        :param logger: Logger - passed in from the calling script
         :return:
         :rtype: tuple - modified_vector_string, modified_environmental_score, \
             modified_severity, rules_applied
@@ -49,13 +50,13 @@ class CvssLib:
                 rule = Rule(rule_action['rule'])
                 result = rule.matches(record)
             except SymbolResolutionError as srerr:
-                logger.error(f'{srerr.message}. The {srerr.symbol_name} block in the rules_actions.json file '
-                             f'was not found in the json record')
+                cls.logger.error(f'{srerr.message}. The {srerr.symbol_name} block in the rules_actions.json file '
+                                 f'was not found in the json record')
             # if true, we need to update the vector string and return it.
             except RuleSyntaxError as rserr:
-                logger.error(f'{rserr.message}. The block value in the '
-                             f'rules_actions.json file '
-                             f'contains incorrect syntax.')
+                cls.logger.error(f'{rserr.message}. The block value in the '
+                                 f'rules_actions.json file '
+                                 f'contains incorrect syntax.')
             if result is True:
                 rules_applied.append({
                     "description": rule_action['description'],

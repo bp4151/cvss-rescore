@@ -53,6 +53,14 @@ Requirements
 | https://www.first.org/cvss/user-guide   
 | https://www.first.org/cvss/v3.1/examples   
 
+Installation
+============
+
+You can find the package at pypi.org
+https://pypi.org/project/cvss-rescore/
+
+To install, simply run 'pip install cvss-rescore' from the command line
+
 Documentation
 ==============
 You can get the current documentation at https://cvss-rescore.readthedocs.io/en/latest/
