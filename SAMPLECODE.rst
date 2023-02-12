@@ -38,8 +38,7 @@ The following is a sample function::
             modified_severity, \
             rules_applied = cvsslib.get_modified_cvss(
             record=record,
-            original_vector_string=original_vector_string,
-            logger=logger)
+            original_vector_string=original_vector_string)
         assert modified_severity[0] == 'Critical'
 
 Notes:
