@@ -37,11 +37,18 @@ class CvssLib:
         :exception: ManualVettingException will be thrown if no rules were matched.
             This can be caught in your parent script
         """
+        # convert the original vector string to a dict
         original_vector_obj = cls.__str2dict(original_vector_string)
-        if original_vector_obj['CVSS'].startswith('3'):
-            cvss_obj = CVSS3(original_vector_string)
-        elif original_vector_obj['CVSS'].startswith('2'):
-            raise ValueError(f'CVSS version {original_vector_obj["CVSS"]} is unsupported, manual vetting required')
+        # check if the vector string contains `CVSS`
+        if original_vector_obj.get('CVSS') is None:
+            raise ValueError('CVSS vector string does not contain CVSS, manual vetting required')
+        else:
+            # if we have a CVSS object and the value is 3.x, use the CVSS3 class
+            # if we have a CVSS object and the value is 2.x, raise an error
+            if original_vector_obj['CVSS'].startswith('3'):
+                cvss_obj = CVSS3(original_vector_string)
+            elif original_vector_obj['CVSS'].startswith('2'):
+                raise ValueError(f'CVSS version {original_vector_obj["CVSS"]} is unsupported, manual vetting required')
         results = []
         rules_applied = []
         result = False

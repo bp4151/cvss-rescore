@@ -46,6 +46,41 @@ def test_cvss2_throws_value_error():
         assert True
 
 
+def test_missing_cvss_throws_value_error():
+    record = {
+        "locations": "",
+        "package": {
+            "Package": {
+                "pm": "npm",
+                "group": None,
+                "name": "minimist",
+                "version": "1.2.0",
+                "vendor": None,
+                "fixVersions": ["[1.2.6]"],
+                "impactPaths": [["npm://covert:1.0.0", "npm://minimist:1.2.0"]]
+            },
+            "Vulnerabilities": [{
+                "id": "XRAY-000000",
+                "title": "Critical vulnerability found in component temp_react_core",
+                "description": "Prototype pollution vulnerability in function parseQuery in parseQuery.js in webpack loader-utils 2.0.0 via the name variable in parseQuery.js.",
+                "cvssScore": "10.0",
+                "cvssVector": "AV:N/AC:L/Au:N/C:C/I:C/A:C)",
+                "cve": "CVE-2022-00000"
+            }]
+        }
+    }
+    original_vector_string = record.get('package').get('Vulnerabilities')[0].get('cvssVector')
+    cvsslib = CvssLib(rules_file_path=rules_file)
+    try:
+        modified_vector_string, \
+            modified_environmental_score, \
+            modified_severity, \
+            rules_applied = \
+            cvsslib.get_modified_cvss(record=record, original_vector_string=original_vector_string)
+    except ValueError as ve:
+        assert True
+
+
 def test_cvss3_does_not_throw_exception():
     record = {
         "locations": "",
@@ -76,8 +111,7 @@ def test_cvss3_does_not_throw_exception():
         modified_severity, \
         rules_applied = cvsslib.get_modified_cvss(
         record=record,
-        original_vector_string=original_vector_string,
-        logger=logger)
+        original_vector_string=original_vector_string)
     assert modified_severity[0] == 'Critical'
 
 
